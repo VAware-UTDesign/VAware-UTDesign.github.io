@@ -4,19 +4,8 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import bleConnectReducer from "./reducer";
-import { connectToBluetooth } from "./actions";
-
-const serviceUuid = "e472cea9-3ae8-4d96-951e-7086fe17d416";
-const characteristicUuid = "7abd909a-a9e5-4409-96a9-7aa4fa33426f";
-var myDescriptor;
-
-let store = createStore(bleConnectReducer, applyMiddleware(thunk));
-
-store.dispatch(connectToBluetooth);
+import { store } from "./store/store";
 
 ReactDOM.render(
   <Provider store={store}>

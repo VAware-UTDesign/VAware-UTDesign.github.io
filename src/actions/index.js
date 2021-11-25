@@ -2,7 +2,9 @@ export const connectToBluetooth = () => {
   return async (dispatch, getState) => {
     const serviceUuid = "e472cea9-3ae8-4d96-951e-7086fe17d416";
     const characteristicUuid = "7abd909a-a9e5-4409-96a9-7aa4fa33426f";
+
     console.log("Requesting any Bluetooth Device...");
+
     const device = await navigator.bluetooth.requestDevice({
       filters: [{ name: ["VAware"] }],
       optionalServices: [serviceUuid],
@@ -25,12 +27,32 @@ export const connectToBluetooth = () => {
 
     let decoder = new TextDecoder("utf-8");
     console.log("> Characteristic User Description: " + decoder.decode(value));
-    // } catch (error) {
-    //   console.log("Argh! " + error);
-    // }
+
     dispatch({
       type: "CONNECT_BLUETOOTH",
       payload: myDescriptor,
+    });
+  };
+};
+
+export const activatePneumatic = (val) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const { characteristic } = getState();
+    console.log(characteristic);
+    let encoder = new TextEncoder("utf-8");
+    await characteristic.writeValue(encoder.encode(val));
+    dispatch({
+      type: "ACTIVATE_PNEUMATIC",
+      payload: characteristic,
+    });
+  };
+};
+
+export const init = (val) => {
+  return async (dispatch, getState) => {
+    dispatch({
+      type: "INITIALIZE",
     });
   };
 };

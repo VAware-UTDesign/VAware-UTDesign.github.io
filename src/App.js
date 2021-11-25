@@ -1,18 +1,37 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { connectToBluetooth } from "./actions";
+import { activatePneumatic, connectToBluetooth } from "./actions";
 
 function App() {
-  //const connect = useSelector((state) => state.connect);
+  const isConnected = useSelector((state) => state.isConnected);
+  console.log(isConnected);
+
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(connectToBluetooth);
-  // }, []);
+
   return (
     <div className="App">
-      <button onClick={() => dispatch(connectToBluetooth())}>Connect</button>
+      {!isConnected && (
+        <button onClick={() => dispatch(connectToBluetooth())}>Connect</button>
+      )}
+      {isConnected && (
+        <div>
+          <button onClick={() => dispatch(activatePneumatic("1"))}>red</button>
+          <button onClick={() => dispatch(activatePneumatic("2"))}>
+            white
+          </button>
+          <button onClick={() => dispatch(activatePneumatic("3"))}>
+            green
+          </button>
+          <button onClick={() => dispatch(activatePneumatic("4"))}>blue</button>
+          <button onClick={() => dispatch(activatePneumatic("5"))}>
+            yellow
+          </button>
+          <button onClick={() => dispatch(activatePneumatic("6"))}>
+            black
+          </button>
+        </div>
+      )}
     </div>
   );
 }
