@@ -1,35 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { activatePneumatic, connectToBluetooth } from "./actions";
+import ConnectPage from "./pages/ConnectPage";
+import BleNotSupported from "./pages/BleNotSupported";
+import Home from "./pages/Home";
 
 function App() {
+  const [supportsBluetooth, setSupportsBluetooth] = useState(false);
   const isConnected = useSelector((state) => state.isConnected);
-  console.log(isConnected);
-
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (navigator.bluetooth) {
+      setSupportsBluetooth(true);
+    }
+  }, []);
+
   return (
-    <div className="App">
-      {!isConnected && (
-        <button onClick={() => dispatch(connectToBluetooth())}>Connect</button>
+    <div>
+      {!supportsBluetooth && !isConnected && (
+        <div>
+          <BleNotSupported />
+        </div>
+      )}
+      {!isConnected && supportsBluetooth && (
+        <div>
+          <ConnectPage />
+        </div>
       )}
       {isConnected && (
         <div>
-          <button onClick={() => dispatch(activatePneumatic("1"))}>red</button>
-          <button onClick={() => dispatch(activatePneumatic("2"))}>
-            white
-          </button>
-          <button onClick={() => dispatch(activatePneumatic("3"))}>
-            green
-          </button>
-          <button onClick={() => dispatch(activatePneumatic("4"))}>blue</button>
-          <button onClick={() => dispatch(activatePneumatic("5"))}>
-            yellow
-          </button>
-          <button onClick={() => dispatch(activatePneumatic("6"))}>
-            black
-          </button>
+          <Home />
         </div>
       )}
     </div>

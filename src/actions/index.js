@@ -1,5 +1,5 @@
 export const connectToBluetooth = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const serviceUuid = "e472cea9-3ae8-4d96-951e-7086fe17d416";
     const characteristicUuid = "7abd909a-a9e5-4409-96a9-7aa4fa33426f";
 
@@ -37,7 +37,6 @@ export const connectToBluetooth = () => {
 
 export const activatePneumatic = (val) => {
   return async (dispatch, getState) => {
-    const state = getState();
     const { characteristic } = getState();
     console.log(characteristic);
     let encoder = new TextEncoder("utf-8");
@@ -45,14 +44,6 @@ export const activatePneumatic = (val) => {
     dispatch({
       type: "ACTIVATE_PNEUMATIC",
       payload: characteristic,
-    });
-  };
-};
-
-export const init = (val) => {
-  return async (dispatch, getState) => {
-    dispatch({
-      type: "INITIALIZE",
     });
   };
 };

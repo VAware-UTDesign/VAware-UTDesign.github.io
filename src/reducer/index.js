@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   characteristic: {},
 };
 
-const BLEReducer = (state = INITIAL_STATE, action) => {
+const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "CONNECT_BLUETOOTH":
       return {
@@ -19,15 +19,9 @@ const BLEReducer = (state = INITIAL_STATE, action) => {
         connectDevice: state.connectDevice,
         characteristic: action.payload,
       };
-    case "INITIALIZE":
-      return {
-        isConnected: false,
-        connectDevice: {},
-        characteristic: {},
-      };
     default:
       return state;
   }
 };
 
-export default BLEReducer;
+export default reducer;
