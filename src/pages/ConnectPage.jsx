@@ -9,12 +9,7 @@ const ConnectButton = ({ label, handleEvent }) => {
   const dispatch = useDispatch();
 
   return (
-    <Box
-      sx={{
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <Box textAlign="center">
       <Fab
         sx={{ borderRadius: 5 }}
         onClick={() => dispatch(connectToBluetooth())}
