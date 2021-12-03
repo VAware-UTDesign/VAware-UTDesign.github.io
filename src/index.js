@@ -6,11 +6,21 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BleNotSupported from "./pages/BleNotSupported";
+import ScenarioPage from "./pages/ScenarioPage";
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <Router>
+        <Routes>
+          <Route path="/notFound" element={<BleNotSupported />} />
+          <Route path="/scenario" element={<ScenarioPage />} />
+          <Route path="/" element={<App />} />
+        </Routes>
+        {/* <App /> */}
+      </Router>
     </React.StrictMode>
   </Provider>,
   document.getElementById("root")

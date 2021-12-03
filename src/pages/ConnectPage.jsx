@@ -1,4 +1,4 @@
-import { Button, Fab } from "@mui/material";
+import { Fab } from "@mui/material";
 import React from "react";
 import BluetoothConnectedIcon from "@mui/icons-material/BluetoothConnected";
 import { useDispatch } from "react-redux";
@@ -9,7 +9,12 @@ const ConnectButton = ({ label, handleEvent }) => {
   const dispatch = useDispatch();
 
   return (
-    <Box>
+    <Box
+      sx={{
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Fab
         sx={{ borderRadius: 5 }}
         onClick={() => dispatch(connectToBluetooth())}

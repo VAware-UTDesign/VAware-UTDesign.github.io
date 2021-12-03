@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import ConnectPage from "./pages/ConnectPage";
 import BleNotSupported from "./pages/BleNotSupported";
 import Home from "./pages/Home";
@@ -8,7 +8,6 @@ import Home from "./pages/Home";
 function App() {
   const [supportsBluetooth, setSupportsBluetooth] = useState(false);
   const isConnected = useSelector((state) => state.isConnected);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (navigator.bluetooth) {

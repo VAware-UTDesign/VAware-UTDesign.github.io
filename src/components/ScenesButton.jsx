@@ -5,8 +5,15 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { activatePneumatic } from "../actions";
 
-const TestButton = ({ pnuematic, color, textColor, title, subtitle }) => {
+const ScenesButton = ({ pnuematic, color, textColor, title, audio }) => {
   const dispatch = useDispatch();
+  let toPlay = new Audio(audio);
+
+  const doScene = () => {
+    toPlay.play();
+    dispatch(activatePneumatic(pnuematic));
+  };
+
   return (
     <Box sx={{ boxShadow: 6, m: 1, pt: 2 }}>
       <Paper
@@ -21,36 +28,17 @@ const TestButton = ({ pnuematic, color, textColor, title, subtitle }) => {
           color: textColor,
         }}
       >
-        <CardActionArea onClick={() => dispatch(activatePneumatic(pnuematic))}>
+        <CardActionArea onClick={() => doScene()}>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             <br />
           </Typography>
           <Typography sx={{ fontSize: 50 }} variant="h1" component="div">
             {title}
           </Typography>
-          <br />
-          <Typography
-            sx={{ fontSize: 30, fontWeight: "bold" }}
-            variant="h1"
-            component="div"
-          >
-            {subtitle}
-          </Typography>
-          {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            adjective
-          </Typography>
-          <Typography variant="body2">
-            well meaning and kindly.
-            <br />
-            <br />
-            <br />
-            <br />
-            {'"a benevolent smile"'}
-          </Typography> */}
         </CardActionArea>
       </Paper>
     </Box>
   );
 };
 
-export default TestButton;
+export default ScenesButton;
