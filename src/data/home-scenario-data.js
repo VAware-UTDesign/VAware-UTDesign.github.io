@@ -7,19 +7,19 @@ export default [
   },
   {
     toSearch: "?2",
-    color: "lightgreen",
+    color: "lightblue",
     textColor: "white",
     title: "👨",
   },
   {
     toSearch: "?3",
-    color: "lightgreen",
+    color: "red",
     textColor: "white",
     title: "😡",
   },
   {
     toSearch: "?4",
-    color: "lightgreen",
+    color: "orange",
     textColor: "white",
     title: "👵",
   },

@@ -36,17 +36,19 @@ const TestButton = ({ pnuematic, color, textColor, title, subtitle }) => {
           >
             {subtitle}
           </Typography>
-          {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            adjective
-          </Typography>
           <Typography variant="body2">
-            well meaning and kindly.
             <br />
             <br />
             <br />
             <br />
-            {'"a benevolent smile"'}
-          </Typography> */}
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </Typography>
         </CardActionArea>
       </Paper>
     </Box>

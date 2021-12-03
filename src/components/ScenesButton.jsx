@@ -32,8 +32,17 @@ const ScenesButton = ({ pnuematic, color, textColor, title, audio }) => {
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             <br />
           </Typography>
-          <Typography sx={{ fontSize: 50 }} variant="h1" component="div">
+          <Typography sx={{ fontSize: 150 }} variant="h1" component="div">
             {title}
+          </Typography>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </Typography>
         </CardActionArea>
       </Paper>

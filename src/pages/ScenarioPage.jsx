@@ -11,10 +11,7 @@ export default function ScenarioPage() {
 
   return (
     <div>
-      <h1>Title</h1>
-      <Link to="/">
-        <ArrowCircleRightIcon />
-      </Link>
+      <h1>Scenario</h1>
       <div
         style={{
           width: "100%",
